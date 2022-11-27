@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+	<title>RastrTools basic DEMO</title>
+	
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="full-screen" content="yes"/>
+	<meta name="screen-orientation" content="portrait"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
+
+	<meta name="description" content="Draws pixels using RastrTools library"/>
+
+	<link rel="stylesheet" href="./style.css" type="text/css" media="all">
+</head>
+<body>
+	<!-- Base64 encoded image (to simplify the general logic, waiting till image be load from file is boring...) -->
+	<img id="cowboy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QYGECI1VsDpiAAAAMpJREFUOMtjYKAQMOKSUHAz/I/Mf7DrPFa1LLg0G1lyMDAwMDDEuLIzLNn9k4GBwfA/NkOY8GlmYGBgWLL7J0OMKztOLzAR40+ICygw4NzxH/gDET3AGBgYGIwsOeAaYV5CNggWHozofiYWnDv+g+HBrvOMOF1ACMBdgCsaty9KRhHzjJuLNS2w4LPl+p01pKdEfN4hmJAU3Az/99XxM/TV8cNDH8buq+PHajhGOtBUCWHQVAmBJ2NkcYJeIBQbuDIURhggG4TORwcA2ytN+Di8YwYAAAAASUVORK5CYII=
+" />
+	<h2>RastrTools demo</h2>
+	<label>History item:</label><span id="cursor"></span>
+
+	<canvas id="canva"></canvas>
+
+	<div class="buttons">
+		<button id="undo">UNDO</button>
+		<button id="redo">REDO</button>
+	</div>
+
+	<script type="text/javascript" src="./rastr.min.js"></script>
+	<script type="text/javascript" src="./utils.js"></script>
+	<script type="text/javascript" src="./main.js"></script>
+	<script>
+
+		const ctx = initCanvas(document.getElementById("canva"));
+		const imageEl = document.getElementById("cowboy");
+		const cowboyImageData = getImageData(imageEl);
+		imageEl.remove(); // keep the demo clean, remove image from DOM
+
+		run_demo(ctx, cowboyImageData);
+
+	</script>
+
+</body>
+</html>
